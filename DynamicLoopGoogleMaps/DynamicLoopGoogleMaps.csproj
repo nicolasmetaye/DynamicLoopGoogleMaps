@@ -188,6 +188,10 @@
       <Project>{BD8A6038-8006-4437-AEF3-A76D6E3AA399}</Project>
       <Name>DynamicLoopGoogleMaps.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DynamicLoopGoogleMaps.DataPreLoader\DynamicLoopGoogleMaps.DataGenerator.csproj">
+      <Project>{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}</Project>
+      <Name>DynamicLoopGoogleMaps.DataGenerator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DynamicLoopGoogleMaps.Domain\DynamicLoopGoogleMaps.Domain.csproj">
       <Project>{668BD281-1A4E-4158-BFE7-D2343A2BA418}</Project>
       <Name>DynamicLoopGoogleMaps.Domain</Name>

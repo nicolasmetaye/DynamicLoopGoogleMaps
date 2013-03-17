@@ -8,7 +8,7 @@ namespace DynamicLoopGoogleMaps.Domain.Repositories
 {
     public abstract class Repository<T> where T : Entity
     {
-        private static List<T> _dataCollection = new List<T>();
+        private static readonly List<T> _dataCollection = new List<T>();
         private readonly object _lock = new object();
 
         public abstract T CreateNew();

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps", "DynamicLoopGoogleMaps\DynamicLoopGoogleMaps.csproj", "{DEC2506C-5AE9-4957-A078-9E0470C6145F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Common", "DynamicLoopGoogleMaps.Common\DynamicLoopGoogleMaps.Common.csproj", "{BD8A6038-8006-4437-AEF3-A76D6E3AA399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Domain", "DynamicLoopGoogleMaps.Domain\DynamicLoopGoogleMaps.Domain.csproj", "{668BD281-1A4E-4158-BFE7-D2343A2BA418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Models", "DynamicLoopGoogleMaps.Models\DynamicLoopGoogleMaps.Models.csproj", "{540503CD-D0B7-4D01-8C5B-83394C616EDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Tests", "DynamicLoopGoogleMaps.Tests\DynamicLoopGoogleMaps.Tests.csproj", "{BBFE4724-0DC4-460C-9656-738AD7755488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEC2506C-5AE9-4957-A078-9E0470C6145F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC2506C-5AE9-4957-A078-9E0470C6145F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC2506C-5AE9-4957-A078-9E0470C6145F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC2506C-5AE9-4957-A078-9E0470C6145F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8A6038-8006-4437-AEF3-A76D6E3AA399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8A6038-8006-4437-AEF3-A76D6E3AA399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8A6038-8006-4437-AEF3-A76D6E3AA399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8A6038-8006-4437-AEF3-A76D6E3AA399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668BD281-1A4E-4158-BFE7-D2343A2BA418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668BD281-1A4E-4158-BFE7-D2343A2BA418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668BD281-1A4E-4158-BFE7-D2343A2BA418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668BD281-1A4E-4158-BFE7-D2343A2BA418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540503CD-D0B7-4D01-8C5B-83394C616EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540503CD-D0B7-4D01-8C5B-83394C616EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540503CD-D0B7-4D01-8C5B-83394C616EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540503CD-D0B7-4D01-8C5B-83394C616EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBFE4724-0DC4-460C-9656-738AD7755488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBFE4724-0DC4-460C-9656-738AD7755488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBFE4724-0DC4-460C-9656-738AD7755488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBFE4724-0DC4-460C-9656-738AD7755488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

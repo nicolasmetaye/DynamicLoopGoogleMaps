@@ -8,7 +8,7 @@ namespace DynamicLoopGoogleMaps.Controllers
 {
     public class BooksController : Controller
     {
-        IBookRepository _bookRepository;
+        private readonly IBookRepository _bookRepository;
 
         public BooksController(IBookRepository bookRepository)
         {

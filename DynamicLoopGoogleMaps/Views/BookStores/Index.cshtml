@@ -1,0 +1,44 @@
+﻿@model DynamicLoopGoogleMaps.Models.Models.BookStoresListModel
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+        <div class="success" >
+            @Model.SuccessMessage
+        </div>
+}
+<div style="text-align: left">
+    <a href="/BookStores/Add" class="link-button">Add a book store</a>
+</div>
+<div style="padding-top: 20px">
+    @if (Model.BookStores.Any())
+    {
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Books</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bookStore in Model.BookStores)
+                {
+                    <tr>
+                        <td>@bookStore.Name</td>
+                        <td>@bookStore.City</td>
+                        <td>@bookStore.Books</td>
+                        <td style="text-align: center"><a href="/BookStores/Edit/@bookStore.Id" class="link-button">Edit</a></td>
+                        <td style="text-align: center"><a href="/BookStores/Delete/@bookStore.Id" class="link-button">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="error" >
+            no book stores found
+        </div>
+    }
+</div>

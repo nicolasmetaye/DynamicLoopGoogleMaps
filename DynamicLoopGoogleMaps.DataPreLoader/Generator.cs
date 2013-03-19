@@ -1,4 +1,8 @@
-﻿using DynamicLoopGoogleMaps.Domain.Repositories;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DynamicLoopGoogleMaps.Domain.Entities;
+using DynamicLoopGoogleMaps.Domain.Repositories;
 
 namespace DynamicLoopGoogleMaps.DataGenerator
 {
@@ -6,11 +10,13 @@ namespace DynamicLoopGoogleMaps.DataGenerator
     {
         private readonly IAuthorRepository _authorRepository;
         private readonly IBookRepository _bookRepository;
+        private readonly IBookStoreRepository _bookStoreRepository;
 
-        public Generator(IBookRepository bookRepository, IAuthorRepository authorRepository)
+        public Generator(IBookRepository bookRepository, IAuthorRepository authorRepository, IBookStoreRepository bookStoreRepository)
         {
             _bookRepository = bookRepository;
             _authorRepository = authorRepository;
+            _bookStoreRepository = bookStoreRepository;
         }
 
         public void Generate()
@@ -20,6 +26,7 @@ namespace DynamicLoopGoogleMaps.DataGenerator
             GenerateJohnBooks();
             GenerateGeorgesBooks();
             GenerateJRRBooks();
+            GenerateBookStores();
         }
 
         private void GenerateCormacBooks()
@@ -166,7 +173,7 @@ namespace DynamicLoopGoogleMaps.DataGenerator
             var theFellowship = _bookRepository.CreateNew();
             theFellowship.AuthorId = jrr.Id;
             theFellowship.Title = "The Fellowship Of The Ring";
-            theFellowship.ISBN = "978-0007203543";
+            theFellowship.ISBN = "9780007203543";
             _bookRepository.Insert(theFellowship);
 
             var theTwoTowers = _bookRepository.CreateNew();
@@ -180,6 +187,108 @@ namespace DynamicLoopGoogleMaps.DataGenerator
             theReturn.Title = "The Return Of The King";
             theReturn.ISBN = "9780007203567";
             _bookRepository.Insert(theReturn);
+        }
+
+        private void GenerateBookStores()
+        {
+            var bookStores = new List<BookStore>();
+
+            var daunt = _bookStoreRepository.CreateNew();
+            daunt.Name = "Daunt Books";
+            daunt.City = "London";
+            daunt.Longitude = -0.151985M;
+            daunt.Latitude = 51.52048M;
+            bookStores.Add(daunt);
+
+            var persephone = _bookStoreRepository.CreateNew();
+            persephone.Name = "Persephone Books";
+            persephone.City = "London";
+            persephone.Longitude = -0.11879M;
+            persephone.Latitude = 51.522109M;
+            bookStores.Add(persephone);
+
+            var londonReview = _bookStoreRepository.CreateNew();
+            londonReview.Name = "London Review Books";
+            londonReview.City = "London";
+            londonReview.Longitude = -0.12409M;
+            londonReview.Latitude = 51.518164M;
+            bookStores.Add(londonReview);
+
+            var foyles = _bookStoreRepository.CreateNew();
+            foyles.Name = "Foyles";
+            foyles.City = "London";
+            foyles.Longitude = -0.129755M;
+            foyles.Latitude = 51.515353M;
+            bookStores.Add(foyles);
+
+            var waterstones = _bookStoreRepository.CreateNew();
+            waterstones.Name = "Waterstones Piccadilly";
+            waterstones.City = "London";
+            waterstones.Longitude = -0.135065M;
+            waterstones.Latitude = 51.509237M;
+            bookStores.Add(waterstones);
+
+            var tabernacle = _bookStoreRepository.CreateNew();
+            tabernacle.Name = "Tabernacle Bookshop";
+            tabernacle.City = "London";
+            tabernacle.Longitude = -0.097911M;
+            tabernacle.Latitude = 51.493275M;
+            bookStores.Add(tabernacle);
+
+            var whsmith = _bookStoreRepository.CreateNew();
+            whsmith.Name = "WHSmith";
+            whsmith.City = "London";
+            whsmith.Longitude = -0.088942M;
+            whsmith.Latitude = 51.512522M;
+            bookStores.Add(whsmith);
+
+            var bookForCooks = _bookStoreRepository.CreateNew();
+            bookForCooks.Name = "Books for Cooks";
+            bookForCooks.City = "London";
+            bookForCooks.Longitude = -0.202861M;
+            bookForCooks.Latitude = 51.515339M;
+            bookStores.Add(bookForCooks);
+
+            var bookart = _bookStoreRepository.CreateNew();
+            bookart.Name = "Bookart";
+            bookart.City = "London";
+            bookart.Longitude = -0.083234M;
+            bookart.Latitude = 51.526375M;
+            bookStores.Add(bookart);
+
+            var stanfords = _bookStoreRepository.CreateNew();
+            stanfords.Name = "Stanfords";
+            stanfords.City = "London";
+            stanfords.Longitude = -0.125216M;
+            stanfords.Latitude = 51.511634M;
+            bookStores.Add(stanfords);
+
+            var penguin = _bookStoreRepository.CreateNew();
+            penguin.Name = "Penguin Books";
+            penguin.City = "London";
+            penguin.Longitude = -0.121574M;
+            penguin.Latitude = 51.510183M;
+            bookStores.Add(penguin);
+
+            var john = _bookStoreRepository.CreateNew();
+            john.Name = "John Sandoe";
+            john.City = "London";
+            john.Longitude = -0.160766M;
+            john.Latitude = 51.49103M;
+            bookStores.Add(john);
+
+            var allBooks = _bookRepository.GetAll().ToList();
+
+            var random = new Random();
+            foreach (var bookStore in bookStores)
+            {
+                bookStore.BooksIds = allBooks
+                    .OrderBy(x => random.Next())
+                    .Take(random.Next(5, 15))
+                    .Select(book => book.Id)
+                    .ToList();
+                _bookStoreRepository.Insert(bookStore);
+            }
         }
     }
 }

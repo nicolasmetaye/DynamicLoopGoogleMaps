@@ -5,6 +5,7 @@ using DynamicLoopGoogleMaps.Common.Helpers;
 using DynamicLoopGoogleMaps.Domain.Entities;
 using DynamicLoopGoogleMaps.Domain.Repositories;
 using DynamicLoopGoogleMaps.Models.Models;
+using StructureMap;
 
 namespace DynamicLoopGoogleMaps.Models.Mapping.Profiles
 {
@@ -31,7 +32,7 @@ namespace DynamicLoopGoogleMaps.Models.Mapping.Profiles
         private List<AuthorListItemModel> GetAuthorsList()
         {
             return
-                new AuthorRepository()
+                ((AuthorRepository)ObjectFactory.GetInstance(typeof(AuthorRepository)))
                 .GetAll()
                 .Select(author => new AuthorListItemModel { Id = author.Id, FullName = author.FirstName + " " + author.LastName })
                 .ToList();

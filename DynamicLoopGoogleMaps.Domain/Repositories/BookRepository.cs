@@ -4,7 +4,7 @@ namespace DynamicLoopGoogleMaps.Domain.Repositories
 {
     public class BookRepository : Repository<Book>, IBookRepository
     {
-        IAuthorRepository _authorRepository;
+        private readonly IAuthorRepository _authorRepository;
 
         public BookRepository(IAuthorRepository authorRepository)
         {

@@ -55,6 +55,7 @@
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Mapping\Profiles\AuthorMap.cs" />
     <Compile Include="Mapping\Profiles\BookMap.cs" />
+    <Compile Include="Mapping\Profiles\BookStoreMap.cs" />
     <Compile Include="Models\AuthorListItemModel.cs" />
     <Compile Include="Models\AuthorModel.cs" />
     <Compile Include="Models\AuthorsListModel.cs" />
@@ -63,6 +64,12 @@
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\BooksListModel.cs" />
     <Compile Include="Models\BooksListSuccessMessage.cs" />
+    <Compile Include="Models\BookStoreModel.cs" />
+    <Compile Include="Models\BookStoreListItemModel.cs" />
+    <Compile Include="Models\BookStoresListModel.cs" />
+    <Compile Include="Models\BookStoresListSuccessMessage.cs" />
+    <Compile Include="Models\BookStoreListItemMapModel.cs" />
+    <Compile Include="Models\MapModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

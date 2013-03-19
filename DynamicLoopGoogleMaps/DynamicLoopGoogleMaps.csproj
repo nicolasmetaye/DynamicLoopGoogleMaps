@@ -90,6 +90,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BookStoresController.cs" />
+    <Compile Include="Controllers\MapController.cs" />
     <Compile Include="IoC\ContainerBootStrap.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -200,6 +202,15 @@
       <Project>{540503CD-D0B7-4D01-8C5B-83394C616EDB}</Project>
       <Name>DynamicLoopGoogleMaps.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BookStores\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BookStores\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Map\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

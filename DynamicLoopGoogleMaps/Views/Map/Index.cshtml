@@ -1,0 +1,30 @@
+﻿@model DynamicLoopGoogleMaps.Models.Models.MapModel
+@section head{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+        var map;
+
+        function initialize() {
+            var mapOptions = {
+                zoom: 12,
+                center: new google.maps.LatLng(51.506285, -0.094242),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
+
+            var locationArray = [@string.Join(", ", Model.BookStores.Select(model => string.Format("new google.maps.LatLng({0}, {1})", model.Latitude, model.Longitude)).ToList())];
+            var locationNameArray = [@Html.Raw(string.Join(", ", Model.BookStores.Select(model => string.Format("\"{0}\"", model.Name)).ToList()))];
+            
+            for (var coord in locationArray) {
+                new google.maps.Marker({
+                    position: locationArray[coord],
+                    map: map,
+                    title: locationNameArray[coord]
+                });
+            }
+        }
+        
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+}
+<div id="mapCanvas"></div>

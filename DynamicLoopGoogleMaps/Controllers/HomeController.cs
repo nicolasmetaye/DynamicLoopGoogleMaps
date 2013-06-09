@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using DynamicLoopGoogleMaps.Common.Extensions;
-using DynamicLoopGoogleMaps.Common.Helpers;
-using DynamicLoopGoogleMaps.Domain.Entities;
+using DynamicLoopGoogleMaps.Domain;
 using DynamicLoopGoogleMaps.Domain.Repositories;
 using DynamicLoopGoogleMaps.Models.Models;
 
@@ -32,14 +29,7 @@ namespace DynamicLoopGoogleMaps.Controllers
         [HttpPost]
         public ActionResult Index(string search)
         {
-            var isbnFiltered = ISBNFilter.Filter(search);
-            var books = _bookRepository.SearchFor(book =>
-                    book.ISBN.IndexOf(isbnFiltered, StringComparison.OrdinalIgnoreCase) > -1 ||
-                    book.Title.IndexOf(search, StringComparison.OrdinalIgnoreCase) > -1 ||
-                    book.Author.FirstName.IndexOf(search, StringComparison.OrdinalIgnoreCase) > -1 ||
-                    book.Author.LastName.IndexOf(search, StringComparison.OrdinalIgnoreCase) > -1 ||
-                    string.Format("{0} {1}", book.Author.FirstName, book.Author.LastName).IndexOf(search, StringComparison.OrdinalIgnoreCase) > -1 ||
-                    string.Format("{1} {0}", book.Author.FirstName, book.Author.LastName).IndexOf(search, StringComparison.OrdinalIgnoreCase) > -1).ToList();
+            var books = _bookRepository.Search(search);
             var model = Mapper.Map<IEnumerable<Book>, BooksListModel>(books);
             return View(model);
         }

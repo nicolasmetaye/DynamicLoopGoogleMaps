@@ -231,7 +231,7 @@ fieldset input[type="text"], input[type="password"], select
     width: 300px;
 }
 
-select
+select[multiple="multiple"]
 {
     height: 300px;
 }

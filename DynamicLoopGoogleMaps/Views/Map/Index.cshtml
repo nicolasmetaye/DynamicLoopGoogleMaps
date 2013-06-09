@@ -27,4 +27,11 @@
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 }
+@using (Html.BeginForm("Index", "Map", FormMethod.Post))
+{
+    <div style="text-align: center">
+        <label style="font-size: 1.2em">Search a book by an Title, ISBN, Author and find the bookstores where it's available
+            <input type="text" style="font-size: 1em" name="search" /></label> <input type="submit" value="Go" style="font-size: 1.2em"/>
+    </div>
+}
 <div id="mapCanvas"></div>

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using DynamicLoopGoogleMaps.Common.Extensions;
-using DynamicLoopGoogleMaps.Domain.Entities;
+using DynamicLoopGoogleMaps.Domain;
 using DynamicLoopGoogleMaps.Domain.Repositories;
 using DynamicLoopGoogleMaps.Models.Models;
 
@@ -11,12 +12,10 @@ namespace DynamicLoopGoogleMaps.Controllers
     public class AuthorsController : Controller
     {
         private readonly IAuthorRepository _authorRepository;
-        private readonly IBookRepository _bookRepository;
 
-        public AuthorsController(IAuthorRepository authorRepository, IBookRepository bookRepository)
+        public AuthorsController(IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository;
-            _bookRepository = bookRepository;
         }
 
         public ActionResult Add()
@@ -29,7 +28,7 @@ namespace DynamicLoopGoogleMaps.Controllers
 
         public ActionResult Edit(int id)
         {
-            var author = _authorRepository.GetById(id);
+            var author = _authorRepository.Get(id);
             if (author == null)
                 return RedirectToAction("Index");
             
@@ -67,7 +66,10 @@ namespace DynamicLoopGoogleMaps.Controllers
         {
             if (ModelState.IsValid)
             {
-                var author = Mapper.Map<AuthorModel, Author>(model);
+                var author = _authorRepository.Get(model.Id);
+                if (author == null)
+                    return RedirectToAction("Index");
+                author = Mapper.Map(model, author);
                 _authorRepository.Save(author);
                 return RedirectToAction("Index", new { message = (int)AuthorsListSuccessMessage.AuthorEditedSuccesfully });
             }
@@ -77,9 +79,12 @@ namespace DynamicLoopGoogleMaps.Controllers
 
         public ActionResult Delete(int id)
         {
-            if (_bookRepository.Any(book => book.AuthorId == id))
+            var author = _authorRepository.Get(id);
+            if (author == null)
+                return RedirectToAction("Index");
+            if (author.Books.Any())
                 return RedirectToAction("Index", new { message = (int)AuthorsListSuccessMessage.AuthorNotDeletedSuccesfully });
-            _authorRepository.Delete(id);
+            _authorRepository.Delete(author);
             return RedirectToAction("Index", new { message = (int)AuthorsListSuccessMessage.AuthorDeletedSuccesfully });
         }
     }

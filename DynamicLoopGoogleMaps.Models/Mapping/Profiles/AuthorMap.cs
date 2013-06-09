@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using DynamicLoopGoogleMaps.Domain.Entities;
+using DynamicLoopGoogleMaps.Domain;
 using DynamicLoopGoogleMaps.Models.Models;
 
 namespace DynamicLoopGoogleMaps.Models.Mapping.Profiles

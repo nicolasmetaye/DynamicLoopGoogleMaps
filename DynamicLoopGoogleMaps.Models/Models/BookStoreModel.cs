@@ -17,11 +17,11 @@ namespace DynamicLoopGoogleMaps.Models.Models
 
         [Required]
         [Display(Name = "Latitude")]
-        public decimal Latitude { get; set; }
+        public double Latitude { get; set; }
 
         [Required]
         [Display(Name = "Longitude")]
-        public decimal Longitude { get; set; }
+        public double Longitude { get; set; }
 
         [Display(Name = "Books")]
         public List<int> BooksIds  { get; set; }

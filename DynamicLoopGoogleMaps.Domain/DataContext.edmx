@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dynamicloopgooglemapsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dynamicloopgooglemapsModelStoreContainer">
+          <EntitySet Name="Authors" EntityType="dynamicloopgooglemapsModel.Store.Authors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Books" EntityType="dynamicloopgooglemapsModel.Store.Books" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BookStores" EntityType="dynamicloopgooglemapsModel.Store.BookStores" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BookStoresBooks" EntityType="dynamicloopgooglemapsModel.Store.BookStoresBooks" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Books_Authors" Association="dynamicloopgooglemapsModel.Store.FK_Books_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookStoresBooks_Books" Association="dynamicloopgooglemapsModel.Store.FK_BookStoresBooks_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="BookStoresBooks" EntitySet="BookStoresBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookStoresBooks_BookStores" Association="dynamicloopgooglemapsModel.Store.FK_BookStoresBooks_BookStores">
+            <End Role="BookStores" EntitySet="BookStores" />
+            <End Role="BookStoresBooks" EntitySet="BookStoresBooks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ISBN" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="AuthorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookStores">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookStoresBooks">
+          <Key>
+            <PropertyRef Name="BookId" />
+            <PropertyRef Name="BookStoreId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookStoreId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Books_Authors">
+          <End Role="Authors" Type="dynamicloopgooglemapsModel.Store.Authors" Multiplicity="1" />
+          <End Role="Books" Type="dynamicloopgooglemapsModel.Store.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookStoresBooks_Books">
+          <End Role="Books" Type="dynamicloopgooglemapsModel.Store.Books" Multiplicity="1" />
+          <End Role="BookStoresBooks" Type="dynamicloopgooglemapsModel.Store.BookStoresBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookStoresBooks">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookStoresBooks_BookStores">
+          <End Role="BookStores" Type="dynamicloopgooglemapsModel.Store.BookStores" Multiplicity="1" />
+          <End Role="BookStoresBooks" Type="dynamicloopgooglemapsModel.Store.BookStoresBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookStores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BookStoresBooks">
+              <PropertyRef Name="BookStoreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dynamicloopgooglemapsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="dynamicloopgooglemapsModel.Author" />
+          <EntitySet Name="Books" EntityType="dynamicloopgooglemapsModel.Book" />
+          <AssociationSet Name="FK_Books_Authors" Association="dynamicloopgooglemapsModel.FK_Books_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <EntitySet Name="BookStores" EntityType="dynamicloopgooglemapsModel.BookStore" />
+          <AssociationSet Name="BookStoresBooks" Association="dynamicloopgooglemapsModel.BookStoresBooks">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="BookStore" EntitySet="BookStores" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Books" Relationship="dynamicloopgooglemapsModel.FK_Books_Authors" FromRole="Authors" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="AuthorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="dynamicloopgooglemapsModel.FK_Books_Authors" FromRole="Books" ToRole="Authors" />
+          <NavigationProperty Name="BookStores" Relationship="dynamicloopgooglemapsModel.BookStoresBooks" FromRole="Book" ToRole="BookStore" />
+        </EntityType>
+        <Association Name="FK_Books_Authors">
+          <End Role="Authors" Type="dynamicloopgooglemapsModel.Author" Multiplicity="1" />
+          <End Role="Books" Type="dynamicloopgooglemapsModel.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BookStore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Latitude" Nullable="false" />
+          <Property Type="Double" Name="Longitude" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="dynamicloopgooglemapsModel.BookStoresBooks" FromRole="BookStore" ToRole="Book" />
+        </EntityType>
+        <Association Name="BookStoresBooks">
+          <End Type="dynamicloopgooglemapsModel.Book" Role="Book" Multiplicity="*" />
+          <End Type="dynamicloopgooglemapsModel.BookStore" Role="BookStore" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dynamicloopgooglemapsModelStoreContainer" CdmEntityContainer="DataContext">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="dynamicloopgooglemapsModel.Author">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="dynamicloopgooglemapsModel.Book">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookStores">
+            <EntityTypeMapping TypeName="dynamicloopgooglemapsModel.BookStore">
+              <MappingFragment StoreEntitySet="BookStores">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="BookStoresBooks" TypeName="dynamicloopgooglemapsModel.BookStoresBooks" StoreEntitySet="BookStoresBooks">
+            <EndProperty Name="BookStore">
+              <ScalarProperty Name="Id" ColumnName="BookStoreId" />
+            </EndProperty>
+            <EndProperty Name="Book">
+              <ScalarProperty Name="Id" ColumnName="BookId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

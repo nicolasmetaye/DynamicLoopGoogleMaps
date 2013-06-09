@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.Tests", "DynamicLoopGoogleMaps.Tests\DynamicLoopGoogleMaps.Tests.csproj", "{BBFE4724-0DC4-460C-9656-738AD7755488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicLoopGoogleMaps.DataGenerator", "DynamicLoopGoogleMaps.DataPreLoader\DynamicLoopGoogleMaps.DataGenerator.csproj", "{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +37,6 @@ Global
 		{BBFE4724-0DC4-460C-9656-738AD7755488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBFE4724-0DC4-460C-9656-738AD7755488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBFE4724-0DC4-460C-9656-738AD7755488}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

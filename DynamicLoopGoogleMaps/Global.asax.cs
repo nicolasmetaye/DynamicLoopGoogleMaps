@@ -1,9 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using DynamicLoopGoogleMaps.DataGenerator;
 using DynamicLoopGoogleMaps.IoC;
 using DynamicLoopGoogleMaps.Models.Mapping;
-using StructureMap;
 
 namespace DynamicLoopGoogleMaps
 {
@@ -36,8 +34,6 @@ namespace DynamicLoopGoogleMaps
             ContainerBootStrap.Bootstrap();
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
             AutoMapperConfiguration.Configure();
-            var dataGenerator = (Generator)ObjectFactory.GetInstance(typeof(Generator));
-            dataGenerator.Generate();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

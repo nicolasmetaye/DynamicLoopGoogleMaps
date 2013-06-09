@@ -58,8 +58,9 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
@@ -150,7 +151,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -189,10 +190,6 @@
     <ProjectReference Include="..\DynamicLoopGoogleMaps.Common\DynamicLoopGoogleMaps.Common.csproj">
       <Project>{BD8A6038-8006-4437-AEF3-A76D6E3AA399}</Project>
       <Name>DynamicLoopGoogleMaps.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DynamicLoopGoogleMaps.DataPreLoader\DynamicLoopGoogleMaps.DataGenerator.csproj">
-      <Project>{F76A17B3-4ED8-41C7-A18F-9C81B19E33E3}</Project>
-      <Name>DynamicLoopGoogleMaps.DataGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\DynamicLoopGoogleMaps.Domain\DynamicLoopGoogleMaps.Domain.csproj">
       <Project>{668BD281-1A4E-4158-BFE7-D2343A2BA418}</Project>

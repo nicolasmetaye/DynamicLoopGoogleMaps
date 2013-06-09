@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using DynamicLoopGoogleMaps.Domain.Entities;
+using DynamicLoopGoogleMaps.Domain;
 using DynamicLoopGoogleMaps.Domain.Repositories;
 using DynamicLoopGoogleMaps.Models.Mapping;
 using DynamicLoopGoogleMaps.Models.Models;
@@ -75,25 +75,27 @@ namespace DynamicLoopGoogleMaps.Tests
         [TestMethod]
         public void Should_Map_A_Book_To_Its_Model()
         {
-            var repository = new AuthorRepository();
-            var bruce = repository.Insert(new Author
+            var bruce = new Author
             {
+                Id = 12,
                 FirstName = "Bruce",
                 LastName = "Wayne"
-            });
-            var author = repository.Insert(new Author
-                                  {
-                                      FirstName = "Cormac",
-                                      LastName = "McCarthy"
-                                  });
+            };
+            var author = new Author
+            {
+                Id = 13,
+                FirstName = "Cormac",
+                LastName = "McCarthy"
+            };
 
-            var model = Mapper.Map<Book, BookModel>(new Book(repository)
+            var model = Mapper.Map<Book, BookModel>(new Book
             {
                 Id = 5,
                 Title = "The Road",
                 ISBN = "1234567891234",
-                AuthorId = author.Id
+                Author = author
             });
+            model = Mapper.Map(new List<Author> {bruce, author}, model);
             Assert.AreEqual(5, model.Id);
             Assert.AreEqual("The Road", model.Title);
             Assert.AreEqual("1234567891234", model.ISBN);
@@ -110,33 +112,34 @@ namespace DynamicLoopGoogleMaps.Tests
         [TestMethod]
         public void Should_Map_A_Books_List_To_Its_Model()
         {
-            var repository = new AuthorRepository();
-            var bruce = repository.Insert(new Author
+            var bruce = new Author
             {
+                Id = 12,
                 FirstName = "Bruce",
                 LastName = "Wayne"
-            });
-            var author = repository.Insert(new Author
+            };
+            var author = new Author
             {
+                Id = 13,
                 FirstName = "Cormac",
                 LastName = "McCarthy"
-            });
+            };
 
             var model = Mapper.Map<IEnumerable<Book>, BooksListModel>(new List<Book>
             {
-                new Book(repository)
+                new Book
                     {
                         Id = 5,
                         Title = "The Road",
                         ISBN = "1234567891234",
-                        AuthorId = author.Id
+                        Author = author
                     },
-                 new Book(repository)
+                 new Book
                     {
                         Id = 6,
                         Title = "The Bat",
                         ISBN = "2345678912345",
-                        AuthorId = bruce.Id
+                        Author = bruce
                     }
             });
             Assert.AreEqual(2, model.Books.Count);
@@ -153,23 +156,21 @@ namespace DynamicLoopGoogleMaps.Tests
         [TestMethod]
         public void Should_Map_A_Model_To_A_Book()
         {
-            var repository = new AuthorRepository();
-            var author = repository.Insert(new Author
+            var author = new Author
             {
+                Id = 12,
                 FirstName = "Cormac",
                 LastName = "McCarthy"
-            });
+            };
 
-            var book = new BookRepository(repository).CreateNew();
-
-            book = Mapper.Map<BookModel, Book>(new BookModel
+            var book = Mapper.Map<BookModel, Book>(new BookModel
             {
                 Id = 5,
                 Title = "The Road",
                 ISBN = "1234567891234",
                 AuthorId = author.Id,
                 IsEditMode = false
-            }, book);
+            });
 
             Assert.AreEqual(5, book.Id);
             Assert.AreEqual("The Road", book.Title);

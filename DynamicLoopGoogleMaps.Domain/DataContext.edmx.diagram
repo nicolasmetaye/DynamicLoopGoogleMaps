@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3055f1bb184342ba8160193a94fc3743" Name="Diagram1">
+        <EntityTypeShape EntityType="dynamicloopgooglemapsModel.Author" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dynamicloopgooglemapsModel.Book" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="dynamicloopgooglemapsModel.FK_Books_Authors" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dynamicloopgooglemapsModel.BookStore" Width="1.5" PointX="11.162422863376524" PointY="4.7391848139181665" />
+        <AssociationConnector Association="dynamicloopgooglemapsModel.BookStoresBooks" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
